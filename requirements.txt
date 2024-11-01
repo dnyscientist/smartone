@@ -1,0 +1,4 @@
+Flask==2.3.2
+Flask-SQLAlchemy==3.0.3
+duckdb==0.8.1
+duckdb-engine==0.9.0
