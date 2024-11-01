@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Data Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">RAG Data Management</h1>
+        
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">
+            Add New RAG Data
+        </button>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tag 1</th>
+                    <th>Tag 2</th>
+                    <th>Tag 3</th>
+                    <th>Tag 4</th>
+                    <th>Tag 5</th>
+                    <th>Key</th>
+                    <th>Information</th>
+                    <th>Last Update</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="ragDataBody">
+                <!-- Data will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New RAG Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addForm">
+                        <div class="mb-3">
+                            <label for="tag1" class="form-label">Tag 1</label>
+                            <input type="text" class="form-control" id="tag1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tag2" class="form-label">Tag 2</label>
+                            <input type="text" class="form-control" id="tag2" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tag3" class="form-label">Tag 3</label>
+                            <input type="text" class="form-control" id="tag3" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tag4" class="form-label">Tag 4</label>
+                            <input type="text" class="form-control" id="tag4" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tag5" class="form-label">Tag 5</label>
+                            <input type="text" class="form-control" id="tag5" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="key" class="form-label">Key</label>
+                            <input type="text" class="form-control" id="key" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="information" class="form-label">Information</label>
+                            <textarea class="form-control" id="information" rows="3" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addRagData()">Add RAG Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit RAG Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="editId">
+                        <div class="mb-3">
+                            <label for="editTag1" class="form-label">Tag 1</label>
+                            <input type="text" class="form-control" id="editTag1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTag2" class="form-label">Tag 2</label>
+                            <input type="text" class="form-control" id="editTag2" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTag3" class="form-label">Tag 3</label>
+                            <input type="text" class="form-control" id="editTag3" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTag4" class="form-label">Tag 4</label>
+                            <input type="text" class="form-control" id="editTag4" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTag5" class="form-label">Tag 5</label>
+                            <input type="text" class="form-control" id="editTag5" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editKey" class="form-label">Key</label>
+                            <input type="text" class="form-control" id="editKey" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editInformation" class="form-label">Information</label>
+                            <textarea class="form-control" id="editInformation" rows="3" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="updateRagData()">Update RAG Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
